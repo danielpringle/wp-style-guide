@@ -149,7 +149,7 @@ function sg_colours(){
     </div>
 </div>
 
-
+<script type="text/javascript" src="https://chir.ag/projects/ntc/ntc.js"></script>
 <script>
 
 function get_background_colour_hex(be_colour){
@@ -161,16 +161,33 @@ let col = mycss.getPropertyValue("background-color");
 
 let beHex = rgb2hex(col);
 
+var n_match = ntc.name(beHex);
+  n_rgb = n_match[0]; // RGB value of closest match
+  n_name = n_match[1]; // Text string: Color name
+  n_exactmatch = n_match[2]; // True if exact color match
+
+//   alert(n_match);
+//    alert(n_name);
+
+
+
+
+    const node2 = document.createElement("div");
+    node2.setAttribute("id", "Div1");
+    const textnode2 = document.createTextNode(n_name);
+    node2.appendChild(textnode2);
+    document.getElementById(be_colour).parentElement.appendChild(node2);
+
 
     const node = document.createElement("div");
+    node.setAttribute("id", "Div2");
     const textnode = document.createTextNode(beHex);
     node.appendChild(textnode);
     document.getElementById(be_colour).parentElement.appendChild(node);
 
+
+
 }
-
-
-
 
 
 function get_background_colour(be_colour){
@@ -248,11 +265,70 @@ for (let i = 0; i < scores.length; i++) {
 
 }
 
-add_div_hex();
-add_div();
+ add_div_hex();
+// add_div();
+
+
+function get_colour_name(be_colour){
+
+    
+var mycss = window.getComputedStyle(document.getElementById(be_colour));
+let col = mycss.getPropertyValue("background-color");
+
+//alert(col);
+
+var n_match = ntc.name(col);
+  n_rgb = n_match[0]; // RGB value of closest match
+  n_name = n_match[1]; // Text string: Color name
+  n_exactmatch = n_match[2]; // True if exact color match
+
+//   alert(n_match);
+//   alert(n_name);
+
+
+    const node = document.createElement("div");
+    const textnode = document.createTextNode(n_name);
+    node.appendChild(textnode);
+    document.getElementById(be_colour).parentElement.appendChild(node);
+
+}
+function add_div_hex2(){
+
+
+// let be_colour = 'colour-4';
+// get_background_colour(be_colour);
+
+// let be_colour2 = 'colour-2';
+// get_background_colour(be_colour2);
+
+
+const scores = ["colour-1", "colour-2", "colour-3", "colour-4"];
+
+for (let i = 0; i < scores.length; i++) {
+    console.log(scores[i]);
+
+    get_colour_name(scores[i]);
+}
+
+}
+
+// add_div_hex2();
 
 
 
+</script>
+
+
+
+<script type="text/javascript">
+
+//   var n_match = ntc.name("#6195ED");
+//   n_rgb = n_match[0]; // RGB value of closest match
+//   n_name = n_match[1]; // Text string: Color name
+//   n_exactmatch = n_match[2]; // True if exact color match
+
+//   alert(n_match);
+//   alert(n_name);
 
 </script>
 <?php 

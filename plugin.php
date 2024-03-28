@@ -135,9 +135,11 @@ function wpse_288589_add_template_to_select( $post_templates, $wp_theme, $post, 
 // 	return $page_template;
 // }
 
+
 add_filter( "page_template", 'load_our_sg_page_template');
 function load_our_sg_page_template ($page_template) {
 	if ( is_page( 'dpuk-style-guide' ) ) {
+		
     $page_template = dirname(  __FILE__  ) . '/includes/templates/style-guide.php';
   }
   return $page_template;
